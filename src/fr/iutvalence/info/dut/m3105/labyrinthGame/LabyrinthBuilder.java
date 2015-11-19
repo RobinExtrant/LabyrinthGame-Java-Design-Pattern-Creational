@@ -1,5 +1,6 @@
 package fr.iutvalence.info.dut.m3105.labyrinthGame;
 
+import java.security.InvalidParameterException;
 import java.util.Set;
 
 public class LabyrinthBuilder 
@@ -13,16 +14,27 @@ public class LabyrinthBuilder
 	public Position exitPosition;
 	
 	
-	public LabyrinthBuilder setWidth(int width)
+	public LabyrinthBuilder setWidth(int width) throws InvalidParameterException
 	{
-		this.width=width;
-		return this;
+		if(width>0)
+		{
+			this.width=width;
+			return this;
+		}
+		else
+			throw new InvalidParameterException("ERROR : the width must be positive");
+		
 	}
 	
-	public LabyrinthBuilder setHeight(int height)
+	public LabyrinthBuilder setHeight(int height) throws InvalidParameterException
 	{
-		this.height=height;
-		return this;
+		if(height>0)
+		{	
+			this.height=height;
+			return this;
+		}
+		else
+			throw new InvalidParameterException("ERROR : the height must be positive");
 	}
 	
 	public LabyrinthBuilder addForbiddenCellPositions(Position forbiddenCellPosition)
@@ -31,14 +43,24 @@ public class LabyrinthBuilder
 		return this;
 	}
 	
-	public LabyrinthBuilder setExitPosition(Position exitPosition)
+	public LabyrinthBuilder setExitPosition(Position exitPosition) throws InvalidParameterException
 	{
-		this.exitPosition=exitPosition;
-		return this;
+		if ((exitPosition.getX()>0) && (exitPosition.getY()>0))
+		{
+			this.exitPosition=exitPosition;
+			return this;
+		}
+		else
+			throw new InvalidParameterException("ERROR : the position x and y must be positive");
 	}
 	
-	public Labyrinth getLabyrinth()
+	public Labyrinth getLabyrinth() throws Exception
 	{
-		return new Labyrinth(width,height, forbiddenCellPositions, exitPosition);
+		if(true)
+		{
+			return new Labyrinth(width,height, forbiddenCellPositions, exitPosition);
+		}
+		else
+			throw new Exception("ERROR");
 	}
 }
