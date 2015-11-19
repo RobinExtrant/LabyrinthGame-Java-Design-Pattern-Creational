@@ -25,7 +25,16 @@ public class TestLabyrinthGame
 		blockPositions.add(new Position(1,2));
 		blockPositions.add(new Position(3,2));
 		blockPositions.add(new Position(3,3));
-		
-		new LabyrinthGame(new Labyrinth(4, 4, blockPositions, new Position(3,1)), RobotArtificialIntelligence.makeRobotArtificialIntelligence(RobotArtificialIntelligence.DBAI)).play();
+			
+		Labyrinth labyrinth = new LabyrinthBuilder().setWidth(4).setHeight(4)
+				.addForbiddenCellPositions(new Position(2,0))
+				.addForbiddenCellPositions(new Position(3,0))
+				.addForbiddenCellPositions(new Position(0,1))
+				.setExitPosition(new Position(3,1))
+				.getLabyrinth();
+	
+		new LabyrinthGame(labyrinth, RobotArtificialIntelligence.makeRobotArtificialIntelligence(RobotArtificialIntelligence.DBAI)).play();
+
 	}
+	
 }
