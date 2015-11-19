@@ -2,8 +2,8 @@ package fr.iutvalence.info.dut.m3105.labyrinthGame;
 
 public abstract class RobotArtificialIntelligence
 {
-	public static String DBAI = "DumbBoArtificialIntelligence";
-	public static String LDBAI = "LesserDumbBoArtificialIntelligence";
+	public final static String DBAI = "DumbBoArtificialIntelligence";
+	public final static String LDBAI = "LesserDumbBoArtificialIntelligence";
 	
 	/**
 	 * callback method used to get the action the robot wish to perform
@@ -20,14 +20,16 @@ public abstract class RobotArtificialIntelligence
 	 */
 	public abstract void notifyMoveResult(boolean hasMoved);
 	
-	public RobotArtificialIntelligence makeRobotArtificialIntelligence(String typeRobot)
+	public static RobotArtificialIntelligence makeRobotArtificialIntelligence(String typeRobot)
 	{
-		/*switch (typeRobot)
+		switch (typeRobot)
 		{
 			case DBAI:
 				return new DumbBotArtificialIntelligence();
 			case LDBAI:
 				return new LesserDumbBotArtificialIntelligence();
-		}*/
+			default:
+				return null;
+		}
 	}
 }
